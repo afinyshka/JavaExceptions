@@ -1,4 +1,4 @@
-package HW_03.MVP;
+package HW_03.Views;
 
 import java.util.Scanner;
 
@@ -8,6 +8,10 @@ public class View {
     public String getString (String stringUser) {
         System.out.printf("\n%s", stringUser);
         return sc.nextLine();
-    }  
+    }
+
+    public void print(String text) {
+        System.out.println(text);
+    }
     
 }

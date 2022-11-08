@@ -6,23 +6,16 @@ import HW_03.Exceptions.NotAStringException;
 import HW_03.Exceptions.NotCorrectSexException;
 
 public class AttrChecker {
-    String str;
 
-    public AttrChecker(String str) {
-        this.str = str;
-    }
-
-    public void stringChecker() throws NotAStringException {
+    public void stringChecker(String str) throws NotAStringException {
         for (char ch : str.toCharArray()) {
             if (!Character.isLetter(ch)) {
-                // System.out.println("Not only letters.");
                 throw new NotAStringException("\n!!!Exception: The full name can contain only letters.");
             }
         }
-        System.out.println("Valid name.");
     }
 
-    public void digitChecker() throws NotANumberException {
+    public void digitChecker(String str) throws NotANumberException {
         if (str.charAt(0) != '8') {
             throw new NotANumberException("\n!!!Exception: The phone number have to begin with '8'.");
         }
@@ -33,21 +26,12 @@ public class AttrChecker {
         }
         for (char ch : str.toCharArray()) {
             if (!Character.isDigit(ch)) {
-                // System.out.println("Not only letters.");
                 throw new NotANumberException("\n!!!Exception: The phone number can contain only numbers.");
             }
         }
-        System.out.println("Valid phone number.");
     }
 
-    public void dateChecker() throws NotADateException, NumberFormatException {
-        // String str = 12.12.1990;
-        // boolean isValidFormat = str.matches("([0-9]{2}).([0-9]{2}).([0-9]{4})");
-        // if (!isValidFormat) {
-        // throw new NotADateException("\n!!!Exception: The wrong date formater.
-        // Example: dd.mm.yyyy.");
-        // }
-        // System.out.println(str);
+    public void dateChecker(String str) throws NotADateException, NumberFormatException {
         if (str.length() != 10) {
             throw new NotADateException("\n!!!Exception: The wrong date formater. Example: dd.mm.yyyy.");
         }
@@ -69,27 +53,15 @@ public class AttrChecker {
                 throw new NotADateException("You entered the wrong year of birth");
             }
         } catch (NumberFormatException e) {
-            // throw new NumberFormatException("\n" + e.getMessage());
             throw new NumberFormatException(
                     "\n!!!Exception: " + e.getMessage() + ". Only numbers are valid. Example: dd.mm.yyyy.");
         }
-        System.out.println("Valid date of birth.");
     }
 
-    public void sexChecker() {
+    public void sexChecker(String str) {
         if (str.charAt(0) != 'f' && str.charAt(0) != 'm') {
             throw new NotCorrectSexException(
                     "\n!!!Exeption: You entered the wrong sex. 'f' for fermale or 'm' for male is only possible.");
         }
-        System.out.println("Valid sex.");
     }
-
-    public static void main(String[] args) {
-        String str = "f";
-        AttrChecker test = new AttrChecker("m");
-        test.sexChecker();
-        System.out.println(str);
-
-    }
-
 }

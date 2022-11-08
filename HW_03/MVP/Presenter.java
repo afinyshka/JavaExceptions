@@ -9,6 +9,7 @@ import HW_03.Exceptions.NotCorrectLengthException;
 import HW_03.Exceptions.NotCorrectSexException;
 import HW_03.Models.FileManager;
 import HW_03.Models.User;
+import HW_03.Views.View;
 
 public class Presenter {
     View view;
@@ -40,26 +41,26 @@ public class Presenter {
             } else {
                 try {
                     User user1 = userCreater.createUser(a);
-                    // System.out.println(user1);
                     FileManager fm = new FileManager(user1);
                     try {
                         fm.write();
+                        view.print("\n!!!Info: The file was successfully written!");
                         check = false;
                     } catch (IOException e) {
                         throw new IOException(e.getMessage());
                     }
                 } catch (NotCorrectLengthException e) {
-                    System.out.println(e.getMessage() + " Try again.");
+                    view.print(e.getMessage() + " Try again.");
                 } catch (NotAStringException e) {
-                    System.out.println(e.getMessage() + " Try again.");
+                    view.print(e.getMessage() + " Try again.");
                 } catch (NotADateException e) {
-                    System.out.println(e.getMessage() + " Try again.");
+                    view.print(e.getMessage() + " Try again.");
                 } catch (NotANumberException e) {
-                    System.out.println(e.getMessage() + " Try again.");
+                    view.print(e.getMessage() + " Try again.");
                 } catch (NotCorrectSexException e) {
-                    System.out.println(e.getMessage() + " Try again.");
+                    view.print(e.getMessage() + " Try again.");
                 } catch (NumberFormatException e) {
-                    System.out.println(e.getMessage() + " Try again.");
+                    view.print(e.getMessage() + " Try again.");
                 }
             }
         }

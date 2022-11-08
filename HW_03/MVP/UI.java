@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import HW_03.Views.View;
+
 public class UI {
     private static boolean loop = true;
+    // View view;
 
     public void consoleUI() throws IOException {
         String text = """
@@ -15,8 +18,9 @@ public class UI {
                 *   0 - exit.                                   *
                 * * * * * * * * * * * * * * * * * * * * * * * * *
                 """;
-
-        Presenter pr = new Presenter(new View(), new UserCreater());
+        View view = new View();
+        Presenter pr = new Presenter(view, new UserCreater());
+        view.print("\nHello!!");
 
         while (loop) {
             System.out.print(text);
@@ -28,14 +32,14 @@ public class UI {
                     case 0 -> {
                         sc.close();
                         loop = false;
-                        System.out.println("\nGood Buy!");
+                        view.print("\nGood Buy!");
                     }
-                    default -> System.out.println("Warning!!! You entered the wrong command!");
+                    default -> view.print("Warning!!! You entered the wrong command!");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Warning!!! You entered the wrong command!");
-            // } catch (IOException e) {
-            //     e.getStackTrace(); // с ними не крашится! 
+                view.print("Warning!!! You entered the wrong command!");
+                // } catch (IOException e) {
+                // e.getStackTrace(); // с ними не крашится!
             }
         }
     }
