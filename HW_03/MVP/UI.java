@@ -10,7 +10,7 @@ public class UI {
     private static boolean loop = true;
     // View view;
 
-    public void consoleUI() throws IOException {
+    public void consoleUI() {
         String text = """
                 * * * * * * * * * * * * * * * * * * * * * * * * *
                 *   Press the number for the command:           *
@@ -28,7 +28,16 @@ public class UI {
                 Scanner sc = new Scanner(System.in);
                 int command = sc.nextInt();
                 switch (command) {
-                    case 1 -> pr.buttonClick();
+                    case 1 -> {
+                        try {
+                            pr.buttonClick();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            sc.close();
+                            loop = false;
+                            view.print("\nNot correct path or problem on server. Come back later. We are woking on this problem!");
+                        }
+                    }
                     case 0 -> {
                         sc.close();
                         loop = false;
@@ -38,8 +47,6 @@ public class UI {
                 }
             } catch (InputMismatchException e) {
                 view.print("Warning!!! You entered the wrong command!");
-                // } catch (IOException e) {
-                // e.getStackTrace(); // с ними не крашится!
             }
         }
     }
