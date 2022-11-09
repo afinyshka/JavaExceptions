@@ -61,6 +61,8 @@ public class Presenter {
                     view.print(e.getMessage() + " Try again.");
                 } catch (NumberFormatException e) {
                     view.print(e.getMessage() + " Try again.");
+                } catch (RuntimeException e) {
+                    view.print(e.getMessage() + " Try again.");
                 }
             }
         }
