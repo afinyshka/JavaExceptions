@@ -34,8 +34,8 @@ public class UserCreater {
             atrChecker.sexChecker(strng[5]);
             char userSex = strng[5].charAt(0);
             return new User(userSurname, userName, userPatronymicName, userBirthDay, userPhoneNumber, userSex);
-        } catch (NotCorrectSexException e) {
-            throw new NotCorrectSexException(e.getMessage());
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException(e.getMessage());
         }
     }
 }
