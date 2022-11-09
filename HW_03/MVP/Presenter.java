@@ -2,11 +2,6 @@ package HW_03.MVP;
 
 import java.io.IOException;
 
-import HW_03.Exceptions.NotADateException;
-import HW_03.Exceptions.NotANumberException;
-import HW_03.Exceptions.NotAStringException;
-import HW_03.Exceptions.NotCorrectLengthException;
-import HW_03.Exceptions.NotCorrectSexException;
 import HW_03.Models.FileManager;
 import HW_03.Models.User;
 import HW_03.Views.View;
@@ -49,16 +44,6 @@ public class Presenter {
                     } catch (IOException e) {
                         throw new IOException(e.getMessage());
                     }
-                } catch (NotCorrectLengthException e) {
-                    view.print(e.getMessage() + " Try again.");
-                } catch (NotAStringException e) {
-                    view.print(e.getMessage() + " Try again.");
-                } catch (NotADateException e) {
-                    view.print(e.getMessage() + " Try again.");
-                } catch (NotANumberException e) {
-                    view.print(e.getMessage() + " Try again.");
-                } catch (NotCorrectSexException e) {
-                    view.print(e.getMessage() + " Try again.");
                 } catch (NumberFormatException e) {
                     view.print(e.getMessage() + " Try again.");
                 } catch (RuntimeException e) {
